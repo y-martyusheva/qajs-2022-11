@@ -22,6 +22,7 @@ describe('API tests for Book Store', () => {
             expect(e.response.data.message).toBe('User exists!');
         }
     })
+
     test('Creating a user with wrong password', async () => {
         const config = {
             method: 'post',
@@ -41,7 +42,8 @@ describe('API tests for Book Store', () => {
             expect(e.response.status).toBe(400);
         }
     })
-    test.only('Creating a user with correct data', async () => {
+
+    test('Creating a user with correct data', async () => {
         const userName = faker.internet.userName();
         const config = {
             method: 'post',
@@ -56,6 +58,7 @@ describe('API tests for Book Store', () => {
         expect(response.data.username).toBe(`${userName}`);
 
     })
+
     test('Generate token', async() => {
         const config = {
             method: 'post',
@@ -70,6 +73,7 @@ describe('API tests for Book Store', () => {
         expect(response.data.result).toBe('User authorized successfully.');
         expect(typeof response.data.token).toBe('string');
     })
+
     test("Error during generating token", async () => {
         const config = {
             method: "post",
