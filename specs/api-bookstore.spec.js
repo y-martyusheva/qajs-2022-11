@@ -1,5 +1,6 @@
 import axios from "axios";
 import { describe, test, expect } from "@jest/globals";
+import { faker } from '@faker-js/faker';
 
 const domain = 'https://bookstore.demoqa.com';
 
@@ -40,18 +41,19 @@ describe('API tests for Book Store', () => {
             expect(e.response.status).toBe(400);
         }
     })
-    test('Creating a user with correct data', async () => {
+    test.only('Creating a user with correct data', async () => {
+        const userName = faker.internet.userName();
         const config = {
             method: 'post',
             url: `${domain}/Account/v1/User`,
             data: {
-                userName: 'test_username8',
+                userName: `${userName}`,
                 password: "test_userName!5"
             }
         }
         const response = await axios(config);
         expect(response.status).toBe(201);
-        expect(response.data.username).toBe('test_username8');
+        expect(response.data.username).toBe(`${userName}`);
 
     })
     test('Generate token', async() => {
