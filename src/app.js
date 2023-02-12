@@ -39,3 +39,18 @@ export const getTotal = (items = [], discount = 0) => {
     }, 0)
     return total - total * discount / 100;
 }
+
+const scores = {
+    Anna: 10,
+    Olga: 1,
+    Ivan: 5,
+};
+
+function getScore(scores) {
+    return Object.values(scores).reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+    );
+}
+
+console.log(getScore(scores));
