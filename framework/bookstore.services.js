@@ -1,9 +1,9 @@
 import supertest from 'supertest';
-import config from "./config.js";
+import bookstoreConfig from "./bookstore.config.js";
 
-const {url} = config;
+const {url} = bookstoreConfig;
 
-const user = {
+export const user = {
     createUser: (payload) => {
         return supertest(url)
             .post('/Account/v1/User')
@@ -31,7 +31,12 @@ const user = {
             .delete(`/Account/v1/User/${userId}`)
             .set('Authorization', `Bearer ${token}`)
             .send(payload)
+    },
+    async getToken() {
+        const payload = bookstoreConfig.booksCreator;
+        const res = await this.token(payload);
+
+        return res.body.token;
     }
 }
 
-export default user

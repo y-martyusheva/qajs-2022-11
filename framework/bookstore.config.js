@@ -1,6 +1,6 @@
 import userName from "./fixtures.js";
 
-const config = {
+const bookstoreConfig = {
     url: 'https://bookstore.demoqa.com',
     wrongToken: '8sogjNIn0d6SHIDWK2r0hEzB3U57oQU6',
     existingUserCredentials: {
@@ -21,4 +21,4 @@ const config = {
     }
 }
 
-export default config;
+export default bookstoreConfig;
