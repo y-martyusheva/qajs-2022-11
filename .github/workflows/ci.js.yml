@@ -34,6 +34,6 @@ jobs:
     - name: Upload report
       uses: actions/upload-artifact@v3
       with:
-        name: report
-        if-no-files-found: error
-        path: ./jest-html-report
+          name: report
+          if-no-files-found: error
+          path: ./jest-html-report
