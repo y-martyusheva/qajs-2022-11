@@ -35,5 +35,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Report
-        if-no-files-found: warning
+        if-no-files-found: warn
         path: ./jest-html-report
