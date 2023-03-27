@@ -9,7 +9,7 @@ beforeAll(async () => {
     token = await user.getToken();
 })
 
-describe('PUT /lists/{id}', () => {
+describe.only('PUT /lists/{id}', () => {
     test('Creating a task successfully', async () => {
         const res = await task.createTask(token, vikunjaConfig.newTask);
         taskID = res.body.id;
