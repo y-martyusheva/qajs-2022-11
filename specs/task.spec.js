@@ -1,7 +1,6 @@
 import {task, user} from '../framework/vikunja.services.js';
 import { describe, test, expect, beforeAll } from "@jest/globals";
 import vikunjaConfig from '../framework/vikunja.config.js';
-import { Severity } from "jest-allure/dist/Reporter";
 
 let token = '';
 let taskID = '';
@@ -20,7 +19,6 @@ describe.skip('Test try.vikunja.io', ()=> {
             reporter.feature('User can create a task');
             reporter.story('Create a task111');
             reporter.description('Test description');
-            reporter.severity(Severity.Critical);
 
 
             const res = await task.createTask(token, vikunjaConfig.newTask);
@@ -40,7 +38,7 @@ describe.skip('Test try.vikunja.io', ()=> {
             expect(res.body.message).toBe('invalid or expired jwt');
         })
     })
-    describe.skip('POST /tasks/{id}', () => {
+    describe('POST /tasks/{id}', () => {
 
         test('Updating a task with incorrect taskID', async () => {
             reporter.story('User cannot update a task with incorrect taskID');
@@ -69,7 +67,7 @@ describe.skip('Test try.vikunja.io', ()=> {
             expect(res.body.done).toBe(true);
         })
     })
-    describe.skip('GET /tasks/{ID}', () => {
+    describe('GET /tasks/{ID}', () => {
         test('Get a task successfully', async () => {
             const res = await task.getTask(taskID, token);
 
@@ -84,7 +82,7 @@ describe.skip('Test try.vikunja.io', ()=> {
             expect(res.body.message).toBe('invalid or expired jwt');
         })
     })
-    describe.skip('DELETE /tasks/{id}', () => {
+    describe('DELETE /tasks/{id}', () => {
         test('Deleting a task with incorrect taskID', async () => {
             const res = await task.deleteTask(vikunjaConfig.incorrectTaskID, token);
 
