@@ -36,4 +36,4 @@ jobs:
       with:
         name: Report
         if-no-files-found: warn
-        path: ./jest-html-report
+        path: jest-html-report
