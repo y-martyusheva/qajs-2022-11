@@ -42,7 +42,7 @@ jobs:
 
   notification:
     name: notification
-    needs: [build, tests]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Send telegram message on push
