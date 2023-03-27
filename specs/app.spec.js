@@ -1,7 +1,7 @@
 import { nameIsValid, fullTrim, getTotal } from '../src/app.js'
 import {describe, expect, test} from "@jest/globals";
 
-describe.skip('nameIsValid', () => {
+describe('nameIsValid', () => {
     test("name's length should be more than 2 symbols", () => {
         expect(nameIsValid('Ben')).toBe(true)
     })
@@ -13,7 +13,7 @@ describe.skip('nameIsValid', () => {
     })
 });
 
-describe.skip('fullTrim', () => {
+describe('fullTrim', () => {
     test.each `
     string    | expected
     ${' Ben'} | ${'Ben'}
@@ -24,7 +24,7 @@ describe.skip('fullTrim', () => {
     })
 })
 
-describe.skip('getTotal', () => {
+describe('getTotal', () => {
     test("discount is not number", () => {
         expect(function() {
             getTotal([{ price: 10, quantity: 10 }], 'discount')
