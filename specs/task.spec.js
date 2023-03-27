@@ -9,7 +9,7 @@ beforeAll(async () => {
     token = await user.getToken();
 })
 
-describe.skip('Test try.vikunja.io', ()=> {
+describe('Test try.vikunja.io', ()=> {
     describe('PUT /lists/{id}', () => {
         beforeEach(()=> {
             reporter.addEnvironment('URL', vikunjaConfig.url)
