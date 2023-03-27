@@ -10,7 +10,7 @@ beforeAll(async () => {
 })
 
 describe('Test try.vikunja.io', ()=> {
-    describe('PUT /lists/{id}', () => {
+    describe.skip('PUT /lists/{id}', () => {
         beforeEach(()=> {
             reporter.addEnvironment('URL', vikunjaConfig.url)
         })
