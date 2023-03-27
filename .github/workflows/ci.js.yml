@@ -30,3 +30,10 @@ jobs:
 
     - name: Run tests
       run: npm test
+
+    - name: Upload report
+      uses: actions/upload-artifact@v3
+      with:
+        name: Report
+        if-no-files-found: error
+        path: ./jest-html-report
