@@ -5,7 +5,7 @@ import { describe, test, expect } from "@jest/globals";
 let existingUserId = '';
 let token = '';
 
-describe.skip('Account', () => {
+describe('Account', () => {
     describe('POST /Account/v1/User', () => {
         test('Сreating a new user', async () => {
             const res = await user.createUser(bookstoreConfig.newUserCredentials);
