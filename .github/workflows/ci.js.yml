@@ -28,6 +28,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+  tests:
     - name: Run tests
       run: npm test
       continue-on-error: true
@@ -39,6 +40,7 @@ jobs:
           if-no-files-found: error
           path: ./jest-html-report
 
+  notification:
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
       with:
