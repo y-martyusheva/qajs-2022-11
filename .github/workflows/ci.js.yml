@@ -9,12 +9,13 @@ on:
 
 jobs:
   build:
+    name: build
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -30,3 +31,35 @@ jobs:
 
     - name: Run tests
       run: npm test
+      continue-on-error: true
+
+    - name: Upload report
+      uses: actions/upload-artifact@v3
+      with:
+          name: report
+          if-no-files-found: error
+          path: ./jest-html-report
+
+    - name: Deployment
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: ./jest-html-report
+        clean: true
+        token: ${{ secrets.TOKEN }}
+
+  notification:
+    name: notification
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
+              ${{ github.actor }} created commit:
+              Commit message: ${{ github.event.commits[0].message }}
+              Repository: ${{ github.repository }}
+              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
