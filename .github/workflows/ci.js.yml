@@ -43,7 +43,7 @@ jobs:
     - name: Deployment
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: jest-html-report
+        folder: ~/projects/otus/qajs-2022-11/jest-html-report
         clean: true
         token: ${{ secrets.TOKEN }}
 
