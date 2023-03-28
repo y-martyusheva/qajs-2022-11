@@ -40,6 +40,13 @@ jobs:
           if-no-files-found: error
           path: ./jest-html-report
 
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: jest-html-report
+        clean: true
+        token: ${{ secrets.TOKEN }}
+
   notification:
     name: notification
     needs: [build]
